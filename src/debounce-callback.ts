@@ -81,10 +81,9 @@ export function debounceCallback<CallbackArgs extends any[]>(
         }
 
         storage.timerId = setInterval(async () => {
-            if (storage.counter < max) {
-                storage.counter += step;
-                return;
-            }
+            storage.counter += step;
+
+            if (storage.counter < max) return;
 
             // clean up
             clearInterval(storage.timerId);
